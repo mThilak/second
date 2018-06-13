@@ -20,7 +20,8 @@ public class Movie implements Serializable {
 
     @Column(name = "budget")
     private Integer budget;
-
+    
+   
     public Long getId() {
         return id;
     }
@@ -29,10 +30,12 @@ public class Movie implements Serializable {
         this.id = id;
     }
 
+   
+    
+    
     public String getName() {
         return name;
     }
-
     public void setName(String name) {
         this.name = name;
     }

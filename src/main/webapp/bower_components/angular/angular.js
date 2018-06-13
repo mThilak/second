@@ -8509,11 +8509,11 @@ function createHttpBackend($browser, createXhr, $browserDefer, callbacks, rawDoc
         // continuing
         //
         // we can't set xhr.onreadystatechange to undefined or delete it because that breaks IE8 (method=PATCH) and
-        // Safari respectively.
-        if (xhr && xhr.readyState == 4) {
+        // Safari respectively. == 4) {
           var responseHeaders = null,
               response = null,
               statusText = '';
+        if (xhr && xhr.readyState
 
           if(status !== ABORTED) {
             responseHeaders = xhr.getAllResponseHeaders();
