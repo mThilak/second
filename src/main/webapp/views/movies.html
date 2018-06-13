@@ -50,6 +50,51 @@
             </div>
         </div>
     </div>
+    
+    <div class="modal fade" id="viewMovieModal" tabindex="-1" role="dialog" aria-labelledby="myMovieLabel"
+         aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <form name="form" role="form" novalidate
+                      class="ng-scope ng-invalid ng-invalid-required ng-dirty ng-valid-minlength"
+                      ng-submit="update_inmodal">
+
+                    <div class="modal-header">
+                        <button type="button" class="close" data-dismiss="modal" aria-hidden="true"
+                                ng-click="clear()">&times;</button>
+                        <h4 class="modal-title" id="myMovieLabel">View a Movie</h4>
+                    </div>
+                    <div class="modal-body">
+                        <div class="form-group">
+                            <label>ID</label>
+                            <input type="text" class="form-control" name="id"
+                                   ng-model="movie.id" readonly>
+                        </div>
+
+                        <div class="form-group">
+                            <label>Name</label>
+                            <input type="text" class="form-control"
+                                   ng-model="movie.name" readonly>
+                        </div>
+                        <div class="form-group">
+                            <label>Budget</label>
+                            <input type="number" class="form-control"
+                                   ng-model="movie.budget" readonly>
+                        </div>
+
+
+                    </div>
+                     <div class="modal-footer">
+                     <button type="submit"
+                                ng-click="update(movie.id)"
+                                class="btn btn-default">
+                            <span class="glyphicon glyphicon-pencil"></span> Edit
+                        </button>
+                     </div>
+                </form>
+            </div>
+        </div>
+    </div>
 
     <div class="table-responsive">
         <table class="table table-striped">
@@ -76,6 +121,11 @@
                                 ng-click="delete(movie.id)"
                                 class="btn btn-danger">
                             <span class="glyphicon glyphicon-remove-circle"></span> Delete
+                        </button>
+                        <button type="submit"
+                                ng-click="view(movie.id)"
+                                class="btn btn-default">
+                            <span class="glyphicon glyphicon-eye-open"></span> View
                         </button>
                     </td>
                 </tr>

@@ -3,6 +3,8 @@ package com.mycompany.myapp.web.rest;
 import com.codahale.metrics.annotation.Timed;
 import com.mycompany.myapp.domain.Movie;
 import com.mycompany.myapp.repository.MovieRepository;
+import com.mycompany.myapp.security.AuthoritiesConstants;
+
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.http.HttpStatus;
@@ -10,6 +12,7 @@ import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
+import javax.annotation.security.RolesAllowed;
 import javax.inject.Inject;
 import java.util.List;
 import java.util.Optional;
@@ -33,6 +36,7 @@ public class MovieResource {
             method = RequestMethod.POST,
             produces = MediaType.APPLICATION_JSON_VALUE)
     @Timed
+    @RolesAllowed(AuthoritiesConstants.ADMIN)
     public void create(@RequestBody Movie movie) {
         log.debug("REST request to save Movie : {}", movie);
         movieRepository.save(movie);
@@ -73,6 +77,7 @@ public class MovieResource {
             method = RequestMethod.DELETE,
             produces = MediaType.APPLICATION_JSON_VALUE)
     @Timed
+    @RolesAllowed(AuthoritiesConstants.ADMIN)
     public void delete(@PathVariable Long id) {
         log.debug("REST request to delete Movie : {}", id);
         movieRepository.delete(id);

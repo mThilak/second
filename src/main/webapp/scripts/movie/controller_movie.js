@@ -17,7 +17,19 @@ secondApp.controller('MovieController', function ($scope, resolvedMovie, Movie) 
             $scope.movie = Movie.get({id: id});
             $('#saveMovieModal').modal('show');
         };
+        
+        $scope.update = function (id) {
+        
+        	$('#viewMovieModal').modal('hide');
+            $scope.movie = Movie.get({id: id});
+            $('#saveMovieModal').modal('show');
+        };
 
+		$scope.view = function (id) {
+            $scope.movie = Movie.get({id: id});
+            $('#viewMovieModal').modal('show');
+        };
+        
         $scope.delete = function (id) {
             Movie.delete({id: id},
                 function () {
